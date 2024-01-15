@@ -1,11 +1,22 @@
 {
   "name": "snylloestetica-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for snylloestetica",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
+    "build": "npm install"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Ayan Khan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.4"
+  }
 }
