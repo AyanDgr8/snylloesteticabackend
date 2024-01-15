@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const UserDetailsBookform = require('../models/bookfrom');
+const UserDetailsBookform = require('../models/bookform');
 const UserDetailsLanding = require('../models/contactus');
 const UserDetailsPopup = require('../models/popup');
 
