@@ -1,13 +1,13 @@
 // src/models/popup.js
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const popupSchema = mongoose.Schema({
-    phone: { type: Number, required: true },
+// const mongoose = require('mongoose');
+
+const popupSchema = new mongoose.Schema({
+    phone: { type: Number, required: [true, "Fill in your phone number"], unique: true },
     bodyZone: { type: String, required: true }
 });
 
 
-const UserDetailsPopup = mongoose.model("UserDetailsPopup", popupSchema)
-
-module.exports = UserDetailsPopup;     
+export const UserDetailsPopup = mongoose.model("UserDetailsPopup", popupSchema);     

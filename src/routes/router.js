@@ -1,18 +1,18 @@
 // src/routes/router.js
 
-const express = require('express');
-const router = express.Router();
 
-const UserDetailsBookform = require('../models/bookform');
-const UserDetailsLanding = require('../models/contactus');
-const UserDetailsPopup = require('../models/popup');
+import { Router } from 'express';
+import UserDetailsBookform from '../models/bookform';
+import UserDetailsLanding from '../models/contactus';
+import UserDetailsPopup from '../models/popup';
 
+const router = Router();
 
-// Endpoint for user details from bookform
-router.post('/user-details-bookform', async (req, res) => {
+// Common function to handle saving user details
+const saveUserDetails = async (req, res, UserDetailsModel) => {
     try {
         console.log('Received request:', req.body);
-        const user = new UserDetailsBookform(req.body);
+        const user = new UserDetailsModel(req.body);
         const savedUser = await user.save();
         console.log('User details saved successfully:', savedUser);
         res.json(savedUser);
@@ -20,34 +20,21 @@ router.post('/user-details-bookform', async (req, res) => {
         console.error('Error saving user details:', error);
         res.status(500).json({ error: error.message });
     }
+};
+
+// Endpoint for user details from bookform
+router.post('/user-details-bookform', async (req, res) => {
+    await saveUserDetails(req, res, UserDetailsBookform);
 });
 
 // Endpoint for user details from contactus form
 router.post('/user-details-contactus', async (req, res) => {
-    try {
-        console.log('Received request:', req.body);
-        const user = new UserDetailsLanding(req.body);
-        const savedUser = await user.save();
-        console.log('User details saved successfully:', savedUser);
-        res.json(savedUser);
-    } catch (error) {
-        console.error('Error saving user details:', error);
-        res.status(500).json({ error: error.message });
-    }
+    await saveUserDetails(req, res, UserDetailsLanding);
 });
 
 // Endpoint for user details from popup
 router.post('/user-details-popup', async (req, res) => {
-    try {
-        console.log('Received request:', req.body);
-        const user = new UserDetailsPopup(req.body);
-        const savedUser = await user.save();
-        console.log('User details saved successfully:', savedUser);
-        res.json(savedUser);
-    } catch (error) {
-        console.error('Error saving user details:', error);
-        res.status(500).json({ error: error.message });
-    }
+    await saveUserDetails(req, res, UserDetailsPopup);
 });
 
-module.exports = router;
+export default router;
