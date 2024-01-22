@@ -23,18 +23,19 @@ const saveUserDetails = async (req, res, UserDetailsModel) => {
 };
 
 // Endpoint for user details from bookform
-router.post('/user-details-bookform', async (req, res) => {
+router.post('/api/user-details-bookform', async (req, res) => {
     await saveUserDetails(req, res, UserDetailsBookform);
 });
 
 // Endpoint for user details from contactus form
-router.post('/user-details-contactus', async (req, res) => {
+router.post('/api/user-details-contactus', async (req, res) => {
     await saveUserDetails(req, res, UserDetailsLanding);
 });
 
 // Endpoint for user details from popup
-router.post('/user-details-popup', async (req, res) => {
+router.post('/api/user-details-popup', async (req, res) => {
     await saveUserDetails(req, res, UserDetailsPopup);
 });
+
 
 export default router;
