@@ -8,8 +8,8 @@ const connectDB = async () => {
     const uri = `${process.env.MONGODB_URI}/${DB_NAME}`;
 
     const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
       connectTimeoutMS: 10000, // (10 seconds)
     };
 
