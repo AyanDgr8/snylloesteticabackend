@@ -5,7 +5,10 @@ import mongoose from 'mongoose';
 // const mongoose = require('mongoose');
 
 const bookformSchema = new mongoose.Schema({
-    name: { type: String, required: [true, "Name is required"] },
+    name: { 
+        type: String, 
+        required: [true, "Name is required"] 
+    },
     phone: { 
         type: Number, 
         required: [true, "Phone number is required"], 
@@ -18,7 +21,10 @@ const bookformSchema = new mongoose.Schema({
         unique: true,
         match:/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
     },
-    bodyZone: { type: String, required: true },
+    bodyZone: { 
+        type: String, 
+        required: true 
+    },
 });
 
 

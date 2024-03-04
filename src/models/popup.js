@@ -12,7 +12,10 @@ const popupSchema = new mongoose.Schema({
         match: /^[0-9]{10}$/ 
 
     },
-    bodyZone: { type: String, required: true }
+    bodyZone: { 
+        type: String, 
+        required: true 
+    }
 });
 
 
